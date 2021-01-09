@@ -62,6 +62,20 @@ const updateNotes = (title , body) =>
     }
 }
 
+const readNote = (title) =>
+{
+    const storedData = loadNotes();
+    const resultData = storedData.filter((e)=>
+    {
+        return e.title === title ;
+    });
+
+    if(resultData.length!=0)
+    return chalk.bgBlue(JSON.stringify(resultData));
+    else
+    return chalk.bgRed("there is not note as "+title);
+}
+
 const saveData = (data) =>
 {
     fs.writeFileSync('data.json' , JSON.stringify(data));
@@ -78,5 +92,5 @@ const loadNotes = () =>
 
 module.exports = 
 {
-    addNote , removeNote , loadNotes , updateNotes 
+    addNote , removeNote , loadNotes , updateNotes , readNote
 }

@@ -57,6 +57,20 @@ yargs.command({
 })
 
 yargs.command({
+    command : "read" ,
+    describe : "list all notes" , 
+    builder : {
+        title : 
+        {
+            describe : "title is required " ,
+            demandOption : true , 
+            type : 'string' 
+        }
+    } ,
+    handler : (argv) => console.log(notes.readNote(argv.title)) ,
+})
+
+yargs.command({
     command : "update" , 
     describe : "run this command to update a node" , 
     builder : 
